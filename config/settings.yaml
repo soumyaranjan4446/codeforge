@@ -1,0 +1,25 @@
+swarm:
+  max_healing_loops: 5
+  sandbox_timeout_sec: 15
+  escalation:
+    enabled: true
+    webhook: ${HUMAN_ESCALATION_WEBHOOK}
+
+llm:
+  temperature_coder: 0.2
+  temperature_tester: 0.4
+  temperature_fixer: 0.3
+  temperature_adversarial: 0.7
+  max_tokens: 4096
+
+memory:
+  top_k: 3
+  min_score: 0.55
+
+metrics:
+  ast_diff:
+    trivial_change_threshold: 0.15   # <15% AST change = suspicious
+  patch_efficiency:
+    max_lines_per_fix: 40
+  sycophancy:
+    test_only_change_threshold: 0.7  # >70% of edits only in test file
